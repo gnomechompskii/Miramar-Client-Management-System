@@ -1,0 +1,70 @@
+body
+{
+	font-family: 'Nunito', sans-serif;
+	background-color:#c0c0c0;
+	height:100%;
+	color:#3b97d3;
+}
+
+.inline
+{
+	float:left;
+}
+
+.row1
+{
+	background-color:white;
+	border-radius:20px;
+	margin-bottom:5%;
+}
+
+#homeIcon, #title
+{
+	padding-right:5%;
+}
+
+#btnClient, #btnProject
+{
+	height:40px;
+	width:100px;
+}
+
+#title2
+{
+	padding-left:5%;
+}
+
+table, thead, td, th
+{
+	z-index:15;
+	font-size:16px;	
+	text-align:center;
+}
+
+#viewID
+{
+    height: 90%;
+    margin-right: 10px;
+}
+
+#editID
+{
+    height:20%;
+}
+
+#deleteID
+{
+    height:30%;
+}
+
+#searchButton
+{
+    margin-right:0;
+}
+
+#clientSearch
+{
+    height:38px;
+    width:302px;
+    margin-bottom: 2%;
+}
