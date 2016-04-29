@@ -35,7 +35,6 @@
     select count(dbo.tProject.projectID) as 'projects' from dbo.tProject
     where dbo.tProject.client_clientID = #clientIDArray[y]#
 </cfquery>
-
  
 
 <html xmlns="http://www.w3.org/1999/xhtml">

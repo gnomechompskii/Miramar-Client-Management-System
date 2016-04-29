@@ -3,7 +3,7 @@
 function validate()
 {	
 	//Validate first name field
-	var fname=document.forms["addClientForm"]["ownerFirstName"].value;  
+	var fname=document.forms["addClientForm"]["clientFirstName"].value;  
     if(fname==null || fname=="")
     {
 		swal({   
@@ -16,7 +16,7 @@ function validate()
 	else if(!isNaN(fname))
 	{
 		swal({   
-		title: "Oops, something went wrong!",   
+		title: "Oops, something went wrong!",
 		text: "This isn't prison. Clients have real names, not numbers!",   
 		type: "error",   
 		confirmButtonText: "Fine." });
@@ -24,7 +24,7 @@ function validate()
 	}
 	
 	//Validate last name field
-    var lname=document.forms["addClientForm"]["ownerLastName"].value;  
+    var lname=document.forms["addClientForm"]["clientLastName"].value;  
     if(lname==null || lname=="")
     {
 		swal({   

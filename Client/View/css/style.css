@@ -67,3 +67,13 @@ btnSave, btnDelete
 	display:inline-block;
 	left:50%;	
 }
+
+.disabledText
+{
+	background-color:#c0c0c0;
+}
+
+.enabledText
+{
+	background-color:white;	
+}

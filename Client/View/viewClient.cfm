@@ -9,6 +9,7 @@
 <link href="../../resources/css/bootstrap-formhelpers.min.css" rel="stylesheet" type='text/css' />
 <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css' />
 <link href="../../resources/css/sweetalert.css" rel="stylesheet" type="text/css" />
+<link href="../../resources/css/toggleStyle.css" rel="stylesheet" type="text/css" />
 
 <link href='css/style.css' rel='stylesheet' type='text/css' />
 <link rel="icon" type="image/vnd.microsoft.icon" href="../../resources/img/client.png" />
@@ -17,6 +18,10 @@
 <script src="../../resources/js/jquery-2.2.2.min.js"></script>
 <script src="../../resources/js/bootstrap.min.js"></script>
 <script src="../../resources/js/sweetalert.min.js"></script>
+<script src="../../resources/js/bootstrap-formhelpers.min.js"></script>
+
+<script src="js/enableEdit.js"></script>
+<script src="js/validateEdit.js"></script>
 
 <cfset selID = url.id />
 <cfquery datasource="clientsystem" name="qViewClient">
@@ -39,32 +44,42 @@
       <!--placeholder row -->
       
       <div class="row col-xs-8">
-          <div class="form">
-            <cfform action="viewClient.cfm" id="viewClientForm" name="viewClientForm" method="post" onsubmit="return validate()">
-              <div>
-                <label> First Name: </label>
-                  <cfinput type="Text" name="clientFirstName" value="#qViewClient.clientFirstName#" size="25" maxlength="50">
-                  <br>
-                  <label> Last Name: </label>
-                  <cfinput type="Text" name="clientLastName" value="#qViewClient.clientLastName#" size="30" maxlength="50">
-                  <br>
-                  <label> Business Name: </label>
-                  <cfinput type="Text" name="businessName" size="40" value="#qViewClient.businessName#" maxlength="100">
-                  <br>
-                  <label> Contact Number: </label>
-                  <cfinput type="text" data-format="1ddd-ddd-dddd" class="bfh-phone" value="#qViewClient.phoneNumber#" name="phoneNumber" size="13" minlength="13">
-                  <br>
-                  <label> Contact Email: </label>
-                  <cfinput type="text" name="email" value="#qViewClient.email#" size="40" >
-                  <br>
-                  <cfinput type="hidden" name="createdOn"/>
-                  <cfinput type="hidden" name="updatedOn"/>
-                  <cfinput type="hidden" name="submitted" value="1" />
-                  <cfinput type="button" value="Save" name="btnSave" class="btn btn-primary btn-lg"/>
-                  <cfinput type="button" value="Delete" name="btnDelete" class="btn btn-danger btn-lg"/>
-              </div>
-            </cfform>
+      	<div class="row">
+          <div class="question">
+            Enable editing?
           </div>
+          <div class="switch">
+            <input onchange="enableEdit()" id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+            <label for="cmn-toggle-7" data-on="Yes" data-off="No"></label>
+          </div>
+        </div>
+      <div class="form">
+        <cfform id="viewClientForm" name="viewClientForm" method="post">
+          <div>
+            <label> First Name: </label>
+              <cfinput type="Text"  name="clientFirstName" class="disabledText" value="#qViewClient.clientFirstName#" size="25" maxlength="50" readonly="true">
+              <br>
+              <label> Last Name: </label>
+              <cfinput type="Text" name="clientLastName" class="disabledText" value="#qViewClient.clientLastName#" size="30" maxlength="50" readonly="true">
+              <br>
+              <label> Business Name: </label>
+              <cfinput type="Text" name="businessName" class="disabledText" size="40" value="#qViewClient.businessName#" maxlength="100" readonly="true">
+              <br>
+              <label> Contact Number: </label>
+              <cfinput type="text" data-format="1ddd-ddd-dddd" class="bfh-phone disabledText" value="#qViewClient.phoneNumber#" name="phoneNumber" size="13" minlength="13" maxlength="13" readonly="true">
+              <br>
+              <label> Contact Email: </label>
+              <cfinput type="text" name="email" class="disabledText" value="#qViewClient.email#" size="40" readonly="true">
+              <br>
+              <cfinput type="hidden" name="createdOn"/>
+              <cfinput type="hidden" name="updatedOn"/>
+              <cfinput type="hidden" name="clientID" value="#qViewClient.clientID#"/>
+              <cfinput type="hidden" name="submitted" value="1" />
+              <cfinput type="button" onclick="submitForm('edit.cfm')" id="saveBtn" value="Save" name="btnSave" class="btn btn-primary btn-lg disabled"/>
+              <cfinput type="button" onclick="submitForm('delete.cfm')" value="Delete" name="btnDelete" class="btn btn-danger btn-lg"/>
+          </div>
+        </cfform>
+      </div>
       </div>
       <!--middle form row -->
       <div class="row col-xs-2"></div>
